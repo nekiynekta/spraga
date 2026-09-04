@@ -1,0 +1,17 @@
+.hero_sec img{
+    border: solid 1px red;
+}
+
+.highlights_list{
+    padding-left: 0;
+}
+
+.cta_layout{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 49.5rem);
+}
+@media screen and (width > 768px) {
+    .cta_layout{
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

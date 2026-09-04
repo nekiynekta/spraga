@@ -1,5 +1,8 @@
 # build output
 dist/
+
+# raw Webflow export (reference only, not part of the app)
+webflow-export/
 # generated types
 .astro/
 
