@@ -142,3 +142,220 @@
   --_typography---text-transform--capitalize: capitalize;
   --_typography---text-transform--lowercase: lowercase;
 }
+
+
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--_theme---background);
+}
+button {
+  background-color: unset;
+  padding: unset;
+  text-align: inherit;
+}
+button:not(:disabled) {
+  cursor: pointer;
+}
+video {
+  width: 100%;
+  object-fit: cover;
+}
+svg {
+  max-width: 100%;
+}
+@media (prefers-color-scheme: light) {
+  option {
+    color: black;
+  }
+}
+img::selection {
+  background: transparent;
+}
+/* Typography */
+body {
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+/* Clear Defaults */
+a:not([class]) {
+  text-decoration: underline;
+}
+p,
+blockquote,
+label {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-wrap: inherit;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+select:has(option[value='']:checked) {
+  color: color-mix(in lab, currentcolor 60%, transparent);
+}
+/* Selection Color */
+::selection {
+  background-color: var(--_theme---selection--background);
+  color: var(--_theme---selection--text);
+}
+/* Margin Trim */
+:is(.u-margin-trim, .w-richtext, .u-content-wrapper, [class*='u-container'], [class*='u-layout-column']) > :not(:not(.w-condition-invisible, .u-cover-absolute, .u-ignore-trim) ~ :not(.w-condition-invisible, .u-cover-absolute, .u-ignore-trim)),
+:is(.u-margin-trim, .w-richtext, .u-content-wrapper, [class*='u-container'], [class*='u-layout-column']) > :not(:not(.w-condition-invisible, .u-cover-absolute, .u-ignore-trim) ~ :not(.w-condition-invisible, .u-cover-absolute, .u-ignore-trim)).u-display-contents > :first-child {
+  margin-top: 0;
+}
+:is(.u-margin-trim, .w-richtext, .u-content-wrapper, [class*='u-container'], [class*='u-layout-column']) > :not(:has(~ :not(.w-condition-invisible, .u-cover-absolute, .u-ignore-trim))),
+:is(.u-margin-trim, .w-richtext, .u-content-wrapper, [class*='u-container'], [class*='u-layout-column']) > :not(:has(~ :not(.w-condition-invisible, .u-cover-absolute, .u-ignore-trim))).u-display-contents > :last-child {
+  margin-bottom: 0;
+}
+/* Line Height Trim */
+:not(.u-text-trim-off) > :is(h1, h2, h3, h4, h5, h6, p):not(.u-text-trim-off, :has([class*='u-text-style-']))::before,
+[class*='u-text-style-']:not(.u-text-trim-off, :has(h1, h2, h3, h4, h5, h6, p))::before {
+  content: '';
+  display: table;
+  margin-bottom: calc(-0.5lh + var(--_text-style---trim-top));
+}
+:not(.u-text-trim-off) > :is(h1, h2, h3, h4, h5, h6, p):not(.u-text-trim-off, :has([class*='u-text-style-']))::after,
+[class*='u-text-style-']:not(.u-text-trim-off, :has(h1, h2, h3, h4, h5, h6, p))::after {
+  content: '';
+  display: table;
+  margin-bottom: calc(-0.5lh + var(--_text-style---trim-bottom));
+}
+/* Rich Text Links */
+.w-richtext a {
+  position: relative;
+  z-index: 4;
+}
+/* Line Clamp */
+[class*='u-line-clamp']:not(.w-richtext),
+[class*='u-line-clamp'].w-richtext > * {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+[class*='u-line-clamp'].w-richtext > :not(:first-child) {
+  display: none;
+}
+.u-line-clamp-2:not(.w-richtext),
+.u-line-clamp-2.w-richtext > * {
+  -webkit-line-clamp: 2;
+}
+.u-line-clamp-3:not(.w-richtext),
+.u-line-clamp-3.w-richtext > * {
+  -webkit-line-clamp: 3;
+}
+.u-line-clamp-4:not(.w-richtext),
+.u-line-clamp-4.w-richtext > * {
+  -webkit-line-clamp: 4;
+}
+/* Text Max Width */
+.u-heading > *,
+.u-text > * {
+  width: 100%;
+  max-width: inherit !important;
+  margin-inline: 0 !important;
+  margin-top: 0 !important;
+}
+/* Background Slot Children */
+.u-background-slot > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: unset;
+}
+/* Alignment */
+.u-alignment-inherit > * {
+  text-align: inherit;
+  justify-content: inherit;
+  align-items: inherit;
+}
+/* Hide */
+.u-hide-if-empty:empty,
+.u-hide-if-empty:has(> *):not(:has(> :not(.w-condition-invisible))),
+.u-hide-if-empty-cms:not(:has(.w-dyn-item)) {
+  display: none !important;
+}
+/* Focus State */
+a,
+button,
+:where([tabindex]),
+input,
+select,
+textarea {
+  outline-offset: var(--focus--offset-outer);
+}
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline-color: var(--_theme---text);
+  outline-width: var(--focus--width);
+  outline-style: solid;
+}
+/* Disabled */
+[data-button]:has(button:disabled) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+/* Section */
+.u-section:has(> .u-section-spacer) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* Global / Clickable Component */
+.wf-design-mode .clickable_wrap {
+  z-index: 0;
+}
+
+/* Layout Slot */
+
+
+*, *::before, *::after {
+-webkit-user-select: none; /* Safari */
+-moz-user-select: none;    /* Firefox */
+-ms-user-select: none;     /* IE10+/Edge */
+user-select: none;        
+}
+html, body {
+overscroll-behavior: none;
+}
+.hide{
+display: none;
+}
+@media (width >= 991px) {
+.hide-desktop {
+  display: none;
+}
+}
+
+:root {
+--desktop-limit: 1370;
+--mobile-limit: 343;
+}
+html {
+font-size: clamp(12px, calc(100vw / 1370 * 16), 16px);
+}
+@media (max-width: 767px) {
+html {
+  font-size: clamp(10px, calc(100vw / 375 * 16), 16px);
+}
+}
+
+.button_main_icon{
+transition: transform 0.3s ease;
+}
+
