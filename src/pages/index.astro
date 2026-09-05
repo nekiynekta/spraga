@@ -495,9 +495,10 @@ const description = 'Place website meta description here';
   </style>
 
   <Fragment slot="scripts">
-    <script is:inline defer src="https://cdn.prod.website-files.com/gsap/3.15.0/gsap.min.js"></script>
-    <script is:inline defer src="https://cdn.prod.website-files.com/gsap/3.15.0/ScrollTrigger.min.js"></script>
-    <script is:inline>
+    <script>
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
       document.addEventListener('DOMContentLoaded', () => {
         gsap.registerPlugin(ScrollTrigger);
 
